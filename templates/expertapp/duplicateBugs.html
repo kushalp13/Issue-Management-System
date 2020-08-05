@@ -1,0 +1,92 @@
+<!-- <ul>
+    {% for bug in allbug %}
+        <h1>this is fixed by :</h1> {{ bug.fixedBy }}
+    {% endfor %}
+
+</ul> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Table V01</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'css/viewBug/images/icons/favicon.ico' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/viewBug/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/viewBug/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/viewbug/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/viewBug/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/viewBug/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<!-- <link rel="stylesheet" type="text/css" href="css/util.css"> -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/viewBug/css/util.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/viewBug/css/main.css' %}">
+	<!-- <link rel="stylesheet" href="{% static 'css/stylelogin.css' %}"> -->
+
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">BugId</th>
+								<th class="column2">Bug Description</th>
+								<th class="column3">Current Build</th>
+								<th class="column4">Date Raised</th>
+								<th class="column5">App Name</th>
+                                <th class="column6">Detected By</th>
+                                <th class="column7">Bug Status</th>
+                                <th class="column8">Fixed By</th>
+                                <th class="column9">Bug Priority</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for bug in allbug %}
+								{% if bug.bugStatus == "DUPLICATE" %}
+									<tr>
+										<td class="column1">{{bug.bugId}}</td>
+										<td class="column2">{{bug.bugDesc}}</td>
+										<td class="column3">{{bug.currBuild}}</td>
+										<td class="column4">{{bug.dateRaised}}</td>
+										<td class="column5">{{bug.appName}}</td>
+                                    	<td class="column6">{{bug.detectedBy}}</td>
+                            	        <td class="column7">{{bug.bugStatus}}</td>
+                            	        <td class="column8">{{bug.fixedBy}}</td>
+                                	    <td class="column9">{{bug.bugPriority}}</td>
+									</tr>
+								{% endif %}
+                            {% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
